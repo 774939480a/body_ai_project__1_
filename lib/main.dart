@@ -13,9 +13,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+
 import 'core/di/service_locator.dart';
 import 'core/themes/app_theme.dart';
 import 'screens/camera_screen.dart';
+
 
 Future<void> main() async {
   // Must be called before any platform-channel interaction.
