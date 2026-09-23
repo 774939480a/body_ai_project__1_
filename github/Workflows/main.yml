@@ -1,0 +1,46 @@
+name: Flutter Build APK
+
+# أحداث التفعيل (عند الرفع أو طلب التشغيل المباشر من المحرر)
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch: # يدعم تشغيل البناء يدوياً أو عبر Klencod IDE
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. جلب كود المشروع من المستودع
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. إعداد بيئة Java لبناء ملفات Android
+      - name: Set up Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # 3. تثبيت إطار عمل Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      # 4. تثبيت الحزم الخاصة بالمشروع
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 5. بناء ملف الـ APK
+      - name: Build APK
+        run: flutter build apk --release
+
+      # 6. رفع ملف الـ APK الناتج لتتمكن من تحميله بعد انتهاء البناء
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: build/app/outputs/flutter-apk/app-release.apk
