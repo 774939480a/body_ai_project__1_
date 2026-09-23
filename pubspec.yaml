@@ -1,0 +1,51 @@
+name: body_ai
+description: AI Real-Time Body Measurement & Posture Analysis — Production Flutter App
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: '>=3.16.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ─── Camera ────────────────────────────────────────────────────────────────
+  camera: ^0.10.5+9
+
+  # ─── AI / Pose Detection ───────────────────────────────────────────────────
+  # ML Kit Pose Detection (on-device, no network required)
+  google_mlkit_pose_detection: ^0.11.0
+
+  # ─── Permissions ───────────────────────────────────────────────────────────
+  permission_handler: ^11.3.1
+
+  # ─── State Management ──────────────────────────────────────────────────────
+  flutter_riverpod: ^2.5.1
+
+  # ─── Dependency Injection ──────────────────────────────────────────────────
+  get_it: ^7.7.0
+
+  # ─── Math & Geometry ───────────────────────────────────────────────────────
+  vector_math: ^2.1.4
+
+  # ─── Utilities ─────────────────────────────────────────────────────────────
+  collection: ^1.18.0
+  equatable: ^2.0.5
+
+  # ─── Logging ───────────────────────────────────────────────────────────────
+  logger: ^2.3.0
+
+  # ─── UI ────────────────────────────────────────────────────────────────────
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
